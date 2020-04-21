@@ -1,10 +1,30 @@
 import org.junit.Test;
 import static org.junit.Assert.*;
 
+import org.junit.Before;
+
+// +-------+-------+-------+
+// |       |       | 2     |
+// |   8   |     7 |   9   |
+// | 6   2 |       | 5     |
+// +-------+-------+-------+
+// |   7   |   6   |       |
+// |       | 9   1 |       |
+// |       |   2   |   4   |
+// +-------+-------+-------+
+// |     5 |       | 6   3 |
+// |   9   | 4     |   7   |
+// |     6 |       |       |
+// +-------+-------+-------+
+
 public class BoardTest {
 
-    @Test public void testGetData() {
-        int[][] data = new int[][]{
+    private int[][] data;
+    private Board board;
+
+    @Before
+    public void init() {
+        this.data = new int[][]{
             {0, 0, 0, 0, 0, 0, 2, 0, 0},
             {0, 8, 0, 0, 0, 7, 0, 9, 0},
             {6, 0, 2, 0, 0, 0, 5, 0, 0},
@@ -14,22 +34,14 @@ public class BoardTest {
             {0, 0, 5, 0, 0, 0, 6, 0, 3},
             {0, 9, 0, 4, 0, 0, 0, 7, 0},
             {0, 0, 6, 0, 0, 0, 0, 0, 0}};
-        Board board = new Board(data);
-        assertArrayEquals(data, board.getData());
+        this.board = new Board(data);
+    }
+
+    @Test public void testGetData() {
+        assertArrayEquals(this.data, board.getData());
     }
 
     @Test public void testGetIndex() {
-        int[][] data = new int[][]{
-            {0, 0, 0, 0, 0, 0, 2, 0, 0},
-            {0, 8, 0, 0, 0, 7, 0, 9, 0},
-            {6, 0, 2, 0, 0, 0, 5, 0, 0},
-            {0, 7, 0, 0, 6, 0, 0, 0, 0},
-            {0, 0, 0, 9, 0, 1, 0, 0, 0},
-            {0, 0, 0, 0, 2, 0, 0, 4, 0},
-            {0, 0, 5, 0, 0, 0, 6, 0, 3},
-            {0, 9, 0, 4, 0, 0, 0, 7, 0},
-            {0, 0, 6, 0, 0, 0, 0, 0, 0}};
-        Board board = new Board(data);
         assertEquals(6, board.getIndex(2,0));
     }
 
