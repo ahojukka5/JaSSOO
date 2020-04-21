@@ -13,20 +13,24 @@ public class Board {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("+-------+-------+-------+\n");
         for (int i = 0; i < 9; i++) {
-            sb.append("|");
-            for (int j = 0; j < 9; j++) {
-                sb.append(" " + (data[i][j] != 0 ? data[i][j] : " "));
-                if (j % 3 == 2) {
-                    sb.append(" |");
-                }
-            }
-            sb.append("\n");
-            if (i % 3 == 2) {
+            if (i % 3 == 0) {
                 sb.append("+-------+-------+-------+\n");
             }
+            for (int j = 0; j < 9; j++) {
+                if (j % 3 == 0) {
+                    sb.append("| ");
+                }
+                if (data[i][j] == 0) {
+                    sb.append(" ");
+                } else {
+                    sb.append(data[i][j]);
+                }
+                sb.append(" ");
+            }
+            sb.append("|\n");
         }
+        sb.append("+-------+-------+-------+");
         return sb.toString();
     }
 
