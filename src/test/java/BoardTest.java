@@ -19,8 +19,16 @@ import org.junit.Before;
 
 public class BoardTest {
 
-    private int[][] data;
-    private Board board;
+    private transient int[][] data;
+    private transient Board board;
+
+    private int[][] getData() {
+        return data;
+    }
+
+    private Board getBoard() {
+        return board;
+    }
 
     @Before
     public void init() {
@@ -38,11 +46,11 @@ public class BoardTest {
     }
 
     @Test public void testGetData() {
-        assertArrayEquals(this.data, board.getData());
+        assertArrayEquals(getData(), getBoard().getData());
     }
 
     @Test public void testGetIndex() {
-        assertEquals(6, board.getIndex(2,0));
+        assertEquals(6, getBoard().getIndex(2,0));
     }
 
 }
