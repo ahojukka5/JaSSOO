@@ -1,7 +1,16 @@
 plugins {
     id 'java'
     id 'application'
+    id 'checkstyle'
 }
+
+configurations {
+    checkstyleConfig
+}
+
+def versions = [
+    checkstyle: '8.10.1',
+]
 
 repositories {
     jcenter() 
@@ -9,6 +18,16 @@ repositories {
 
 dependencies {
     testImplementation 'junit:junit:4.12' 
+    checkstyleConfig ("com.puppycrawl.tools:checkstyle:${versions.checkstyle}") {
+        transitive = false
+    }
+}
+
+checkstyle {
+    showViolations = true
+    ignoreFailures = false
+    toolVersion = "${versions.checkstyle}"
+    config = resources.text.fromArchiveEntry(configurations.checkstyleConfig, 'google_checks.xml')
 }
 
 mainClassName = 'Main'
