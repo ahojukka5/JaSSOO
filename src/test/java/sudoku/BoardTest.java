@@ -1,8 +1,10 @@
 package sudoku;
 
-import org.junit.Test;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
+
 import org.junit.Before;
+import org.junit.Test;
 
 // +-------+-------+-------+
 // |       |       | 2     |
@@ -20,39 +22,44 @@ import org.junit.Before;
 
 public class BoardTest {
 
-    private transient int[][] data;
-    private transient Board board;
+  private transient int[][] data;
+  private transient Board board;
 
-    private int[][] getData() {
-        return data;
-    }
+  private int[][] getData() {
+    return data;
+  }
 
-    private Board getBoard() {
-        return board;
-    }
+  private Board getBoard() {
+    return board;
+  }
 
-    @Before
-    public void init() {
-        this.data = new int[][]{
-            {0, 0, 0, 0, 0, 0, 2, 0, 0},
-            {0, 8, 0, 0, 0, 7, 0, 9, 0},
-            {6, 0, 2, 0, 0, 0, 5, 0, 0},
-            {0, 7, 0, 0, 6, 0, 0, 0, 0},
-            {0, 0, 0, 9, 0, 1, 0, 0, 0},
-            {0, 0, 0, 0, 2, 0, 0, 4, 0},
-            {0, 0, 5, 0, 0, 0, 6, 0, 3},
-            {0, 9, 0, 4, 0, 0, 0, 7, 0},
-            {0, 0, 6, 0, 0, 0, 0, 0, 0}};
-        this.board = new Board(data);
-    }
+  /**
+   * Initialization of tests.
+   */
+  @Before
+  public void init() {
+    this.data =
+        new int[][] {
+          {0, 0, 0, 0, 0, 0, 2, 0, 0},
+          {0, 8, 0, 0, 0, 7, 0, 9, 0},
+          {6, 0, 2, 0, 0, 0, 5, 0, 0},
+          {0, 7, 0, 0, 6, 0, 0, 0, 0},
+          {0, 0, 0, 9, 0, 1, 0, 0, 0},
+          {0, 0, 0, 0, 2, 0, 0, 4, 0},
+          {0, 0, 5, 0, 0, 0, 6, 0, 3},
+          {0, 9, 0, 4, 0, 0, 0, 7, 0},
+          {0, 0, 6, 0, 0, 0, 0, 0, 0}
+        };
+    this.board = new Board(data);
+  }
 
-    @Test public void testGetData() {
-        assertArrayEquals(getData(), getBoard().getData());
-    }
+  @Test
+  public void testGetData() {
+    assertArrayEquals(getData(), getBoard().getData());
+  }
 
-    @Test public void testGetIndex() {
-        assertEquals(6, getBoard().getIndex(2,0));
-    }
-
+  @Test
+  public void testGetIndex() {
+    assertEquals(6, getBoard().getIndex(2, 0));
+  }
 }
-
