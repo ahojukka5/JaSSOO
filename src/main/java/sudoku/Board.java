@@ -83,4 +83,24 @@ public class Board {
     }
     return false;
   }
+
+  /**
+   * Check to see if there is a number given on a arbitrary cell of sudoku. By
+   * cell in this context is meant a 3x3 sub-problem of sudoku.
+   *
+   * @param cx     cell number in horizontal direction, {0, 1, 2}
+   * @param cy     cell number in vertical direction, {0, 1, 2}
+   * @param number to look for
+   * @return true / false
+   */
+  public boolean hasInCell(int cx, int cy, int number) {
+    for (int i = 3 * cx; i < 3 * (cx + 1); i++) {
+      for (int j = 3 * cy; j < 3 * (cy + 1); j++) {
+        if (data[i][j] == number) {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
 }
