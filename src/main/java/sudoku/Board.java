@@ -51,4 +51,20 @@ public class Board {
   public void setIndex(int i, int j, int v) {
     data[i][j] = v;
   }
+
+  /**
+   * Check to see if there is a number given on a arbitrary row of sudoku.
+   *
+   * @param row    number row, 0 .. 8
+   * @param number to look for
+   * @return true / false
+   */
+  public boolean hasInRow(int row, int number) {
+    for (int i = 0; i < 9; i++) {
+      if (data[row][i] == number) {
+        return true;
+      }
+    }
+    return false;
+  }
 }
