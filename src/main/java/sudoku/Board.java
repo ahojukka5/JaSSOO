@@ -67,4 +67,20 @@ public class Board {
     }
     return false;
   }
+
+  /**
+   * Check to see if there is a number given on a arbitrary column of sudoku.
+   *
+   * @param column number of column, 0 .. 8
+   * @param number to look for
+   * @return true / false
+   */
+  public boolean hasInColumn(int column, int number) {
+    for (int i = 0; i < 9; i++) {
+      if (data[i][column] == number) {
+        return true;
+      }
+    }
+    return false;
+  }
 }
