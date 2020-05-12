@@ -76,4 +76,10 @@ public class BoardTest {
     assertTrue(getBoard().hasInColumn(0, 6));
     assertFalse(getBoard().hasInColumn(0, 1));
   }
+
+  @Test
+  public void testHasInCell() {
+    assertTrue(getBoard().hasInCell(0, 0, 2));
+    assertFalse(getBoard().hasInCell(0, 0, 1));
+  }
 }
