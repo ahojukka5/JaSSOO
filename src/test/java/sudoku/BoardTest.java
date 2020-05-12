@@ -2,6 +2,8 @@ package sudoku;
 
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -61,5 +63,11 @@ public class BoardTest {
   @Test
   public void testGetIndex() {
     assertEquals(6, getBoard().getIndex(2, 0));
+  }
+
+  @Test
+  public void testHasInRow() {
+    assertTrue(getBoard().hasInRow(0, 2));
+    assertFalse(getBoard().hasInRow(1, 2));
   }
 }
